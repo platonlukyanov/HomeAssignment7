@@ -1,71 +1,74 @@
 #ifndef CIRCULAR_LIST_H
 #define CIRCULAR_LIST_H
 
-#include <iterator>
-#include <cstddef>
-#include <stdexcept>
 #include <algorithm>
+#include <cstddef>
+#include <iterator>
+#include <stdexcept>
 
 template <typename T>
 class CircularList {
-private:
-    struct Node {
-        T data;
-        Node* next;
-        Node* prev;
-        Node(const T& value) : data(value), next(this), prev(this) {}
-    };
+    private:
+        struct Node {
+                T data;
+                Node* next;
+                Node* prev;
+                Node(const T& value) : data(value), next(this), prev(this) {}
+        };
 
-    Node* head;
-    size_t count;
-
-public:
-    CircularList();
-    ~CircularList();
-
-    class iterator;
-
-    iterator begin();
-    iterator end();
-
-    size_t size() const;
-    bool empty() const;
-
-    T& front();
-    const T& front() const;
-    T& back();
-    const T& back() const;
-
-    void push_back(const T& value);
-    void push_front(const T& value);
-    void pop_back();
-    void pop_front();
-
-    void clear();
-
-    iterator insert(iterator pos, const T& value);
-    iterator erase(iterator pos);
-
-    void assign(size_t n, const T& value);
-
-    void swap(CircularList& other);
-
-    class iterator : public std::iterator<std::bidirectional_iterator_tag, T> {
-        Node* node;
         Node* head;
+        size_t count;
+
     public:
-        iterator(Node* n = nullptr, Node* h = nullptr);
-        T& operator*();
-        iterator& operator++();
-        iterator& operator--();
-        bool operator==(const iterator& other) const;
-        bool operator!=(const iterator& other) const;
-        friend class CircularList;
-    };
+        CircularList();
+        ~CircularList();
+
+        class iterator;
+
+        iterator begin();
+        iterator end();
+
+        size_t size() const;
+        bool empty() const;
+
+        T& front();
+        const T& front() const;
+        T& back();
+        const T& back() const;
+
+        void push_back(const T& value);
+        void push_front(const T& value);
+        void pop_back();
+        void pop_front();
+
+        void clear();
+
+        iterator insert(iterator pos, const T& value);
+        iterator erase(iterator pos);
+
+        void assign(size_t n, const T& value);
+
+        void swap(CircularList& other);
+
+        class iterator
+            : public std::iterator<std::bidirectional_iterator_tag, T> {
+                Node* node;
+                Node* head;
+
+            public:
+                iterator(Node* n = nullptr, Node* h = nullptr);
+                T& operator*();
+                iterator& operator++();
+                iterator& operator--();
+                bool operator==(const iterator& other) const;
+                bool operator!=(const iterator& other) const;
+                friend class CircularList;
+        };
 };
 
 template <typename T>
-CircularList<T>::CircularList() : head(nullptr), count(0) {}
+CircularList<T>::CircularList() : head(nullptr), count(0) {
+}
 
 template <typename T>
 CircularList<T>::~CircularList() {
@@ -125,7 +128,8 @@ void CircularList<T>::pop_front() {
 }
 
 template <typename T>
-typename CircularList<T>::iterator CircularList<T>::insert(iterator pos, const T& value) {
+typename CircularList<T>::iterator CircularList<T>::insert(iterator pos,
+                                                           const T& value) {
     if (pos.node == nullptr || head == nullptr) {
         push_back(value);
         return iterator(head->prev, head);
@@ -224,7 +228,8 @@ void CircularList<T>::swap(CircularList& other) {
 }
 
 template <typename T>
-CircularList<T>::iterator::iterator(Node* n, Node* h) : node(n), head(h) {}
+CircularList<T>::iterator::iterator(Node* n, Node* h) : node(n), head(h) {
+}
 
 template <typename T>
 T& CircularList<T>::iterator::operator*() {
@@ -253,5 +258,4 @@ bool CircularList<T>::iterator::operator!=(const iterator& other) const {
     return node != other.node;
 }
 
-
-#endif 
+#endif
