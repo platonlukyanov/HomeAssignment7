@@ -17,3 +17,8 @@ make test
 make format
 ```
 
+### Генерация документации
+```bash
+make gen-doc
+```
+

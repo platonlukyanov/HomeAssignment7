@@ -27,4 +27,7 @@ test: $(TEST_OBJECTS)
 $(TEST_DIR)/test-%.o: $(TEST_DIR)/test-%.cpp $(DEPS)
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
+gen-docs:
+	doxygen Doxyfile
+
 .PHONY: clean format $(PROJECT) test all
