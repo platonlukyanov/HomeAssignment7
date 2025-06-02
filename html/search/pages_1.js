@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['circular_20doubly_20linked_20list_0',['CircularList - Implementation of a Circular Doubly Linked List',['../index.html',1,'']]],
+  ['circularlist_20implementation_20of_20a_20circular_20doubly_20linked_20list_1',['CircularList - Implementation of a Circular Doubly Linked List',['../index.html',1,'']]]
+];
