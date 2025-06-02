@@ -214,7 +214,7 @@ TEST(CircularList, test_copy_constructor) {
     list1.push_back(1);
     list1.push_back(2);
     list1.push_back(3);
-    
+
     try {
         CircularList<int> list2(list1);
         EXPECT_EQ(list2.size(), 3);
@@ -263,9 +263,12 @@ TEST(CircularList, test_move_assignment) {
 
 TEST(CircularList, test_comparison_operators) {
     CircularList<int> a, b, c;
-    a.push_back(1); a.push_back(2);
-    b.push_back(1); b.push_back(2);
-    c.push_back(2); c.push_back(3);
+    a.push_back(1);
+    a.push_back(2);
+    b.push_back(1);
+    b.push_back(2);
+    c.push_back(2);
+    c.push_back(3);
     EXPECT_TRUE(a == b);
     EXPECT_FALSE(a != b);
     EXPECT_TRUE(a != c);
