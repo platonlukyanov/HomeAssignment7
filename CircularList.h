@@ -78,12 +78,16 @@ class CircularList {
         bool operator<=(const CircularList& other) const;
         bool operator>=(const CircularList& other) const;
 
-        class iterator
-            : public std::iterator<std::bidirectional_iterator_tag, T> {
+        class iterator {
                 Node* node;
                 Node* head;
 
             public:
+            	using iterator_category = std::bidirectional_iterator_tag;
+	    	using value_type        = T;
+	    	using difference_type   = std::ptrdiff_t;
+	        using pointer           = T*;
+	        using reference         = T&;
                 iterator(Node* n = nullptr, Node* h = nullptr);
                 T& operator*();
                 iterator& operator++();
@@ -93,12 +97,16 @@ class CircularList {
                 friend class CircularList;
         };
 
-        class const_iterator
-            : public std::iterator<std::bidirectional_iterator_tag, const T> {
+        class const_iterator {
                 Node* node;
                 Node* head;
 
             public:
+                using iterator_category = std::bidirectional_iterator_tag;
+	        using value_type        = T;
+	        using difference_type   = std::ptrdiff_t;
+	        using pointer           = const T*;
+	        using reference         = const T&;
                 const_iterator(Node* n = nullptr, Node* h = nullptr);
                 const T& operator*() const;
                 const_iterator& operator++();
